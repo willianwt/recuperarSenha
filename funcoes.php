@@ -15,7 +15,7 @@ function generateRandomString($length = 20) {
 function enviar_email($para, $chave){
 
     $assunto = "Recuperação de Senha";
-    $link = 'http://www.williantaiguara.com/recuperasenha/alterasenha.php?email='.$para.'&chave='.$chave;
+    $link = 'http://www.williantaiguara.com/recuperasenha/alterarsenha.php?email='.$para.'&chave='.$chave;
     $mensagem = "<b>Olá,</b><br><br>Voce solicitou uma recuperação de senha.<br> <a href='$link' target='_blank'>CLIQUE AQUI</a> para resetar sua senha. Caso não consiga clicar, copie o endereço abaixo e cole no seu navegador.<br><i>". $link."</i><br><br><b>Caso não tenha solicitado, desconsidere esse email.</b>";
 
     $headers   = 'MIME-Version: 1.0' . "\r\n";
@@ -24,19 +24,24 @@ function enviar_email($para, $chave){
 				 'X-Mailer: PHP' . phpversion();
 
 	$mail = mail($para, $assunto, $mensagem, $headers);
-	$mail->send();
+
+	if(!$mail) {
+		return 'fail';
+	} else {
+		return 'success';
+	}
 }
 
 function verificar_chave($email, $chave)
 {	
 	global $conn;
 	
-	$query = mysqli_query($db, "SELECT valid FROM recovery_keys WHERE usuario = '$userID' AND token = '$token'");
+	$query = mysqli_query($conn, "SELECT valido FROM recuperasenha WHERE email = '$userID' AND chave = '$token'");
 	$row = mysqli_fetch_assoc($query);
 	
 	if(mysqli_num_rows($query) > 0)
 	{
-		if($row['valid'] == 1)
+		if($row['valido'] == 1)
 		{
 			return 1;
 		}else

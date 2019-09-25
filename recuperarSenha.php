@@ -18,7 +18,7 @@ if($res->num_rows > 0){
         if ($query) {
                 $enviar_email = enviar_email($email, $chave);
                 if ($enviar_email) {
-                        echo '<script type="application/javascript">alert("Verifique seu email! :)"); window.location.href ="index.php";</script>';
+                    echo '<script type="application/javascript">alert("Email enviado. Verifique sua caixa de email."); window.location.href ="index.php";</script>';
                     
                 } else {
                     echo '<script type="application/javascript">alert("Não foi possível enviar o email. Tente novamente."); window.location.href ="index.php";</script>';
@@ -30,6 +30,7 @@ if($res->num_rows > 0){
         }
 
 }else{
-        echo '<script type="application/javascript">alert("Email não cadastrado.."); window.location.href ="index.php";</script>';
+    echo '<script type="application/javascript">alert("Email não cadastrado.."); window.location.href ="index.php";</script>';
+
 
 }
