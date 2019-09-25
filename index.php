@@ -41,20 +41,26 @@
 	<div class="modal fade" id="recuperarSenha" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Recuperar Senha</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-			<span aria-hidden="true">&times;</span>
-			</button>
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Recuperar Senha</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="recuperarSenha.php" method="POST">
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="text" name="email" placeholder="Email" class="form-control" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</form>
 		</div>
-		<div class="modal-body">
-			...
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-			<button type="button" class="btn btn-primary">Salvar mudanças</button>
-		</div>
-		</div>
+		
+
 	</div>
 	</div>
 	<!-- JavaScript (Opcional) -->
