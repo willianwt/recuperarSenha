@@ -36,7 +36,7 @@ function verificar_chave($email, $chave)
 {	
 	global $conn;
 	
-	$query = mysqli_query($conn, "SELECT valido FROM recuperasenha WHERE email = '$userID' AND chave = '$token'");
+	$query = mysqli_query($conn, "SELECT valido FROM recuperasenha WHERE email = '$email' AND chave = '$chave'");
 	$row = mysqli_fetch_assoc($query);
 	
 	if(mysqli_num_rows($query) > 0)
